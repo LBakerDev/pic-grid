@@ -14,7 +14,8 @@ class App extends Component {
   onSearch = (term) => {
     unsplash.get('/search/photos', {
       params: {
-        query: term
+        query: term,
+        per_page: 30
       },
     })
       .then((res) => {

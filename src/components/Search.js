@@ -20,11 +20,11 @@ class SearchBox extends Component {
                      action="" 
                      className="ui form">
                         <div className="field">
-                            <label htmlFor="">Image Search</label>
+                            <label htmlFor="">Search for Dope Pics</label>
                             <div className="ui input">
                                 <input
                                     value={this.state.term}
-                                    placeholder="Search..."
+                                    placeholder="Lambo..."
                                     onChange={(e) => this.setState({term: e.target.value})}
                                     type="text" />
                                 <br />
