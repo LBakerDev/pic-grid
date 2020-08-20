@@ -1,14 +1,19 @@
 import React, { Component } from 'react';
+
+
+
 import './App.css';
 import SearchBox from './Search';
 import unsplash from '../api/unsplash';
 import ImageList from './ImageList';
+import ImageDetail from './ImageDetail';
 
 
 class App extends Component {
 
   state = {
-    photos: []
+    photos: [],
+    selectedPic: null
   }
 
   onSearch = (term) => {
@@ -22,22 +27,44 @@ class App extends Component {
         let response = res.data.results
         console.log(response)
         this.setState({
-          photos: response
+          photos: response,
+          selectedPic: null
         })
       })
       .catch((err) => console.log(err))
   }
 
+  onPicSelect = (picture) => {
+    console.log(picture)
+    this.setState({
+      selectedPic: picture
+    })
+  }
+
   render() {
 
+    const { selectedPic } = this.state;
+
     return (
+      
       <div className="ui container">
         <SearchBox
           search={this.onSearch}
         />
-        <ImageList
-          photos={this.state.photos}
-        />
+
+        {!selectedPic &&
+          < ImageList
+            onPicSelect={this.onPicSelect}
+            photos={this.state.photos}
+          />
+
+        }
+        {selectedPic &&
+          <ImageDetail
+            photo={selectedPic}
+          />
+        }
+
       </div>
     );
   }

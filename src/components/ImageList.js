@@ -5,7 +5,12 @@ import ImageCard from './ImageCard'
 const ImageList = (props) => {
 
     const images = props.photos.map((photo) => {
-        return <ImageCard key={photo.id} photo={photo} />
+        return <ImageCard
+            alt={'A pic'}
+            onPicSelect={props.onPicSelect}
+            key={photo.id}
+            photo={photo}
+        />
     })
 
     return (

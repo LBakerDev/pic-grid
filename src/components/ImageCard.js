@@ -25,7 +25,10 @@ class ImageCard extends React.Component {
         const { description, urls } = this.props.photo;
 
         return (
-            <div style={{ gridRowEnd: `span ${this.state.spans}` }}>
+            <div 
+            onClick={()=> this.props.onPicSelect(this.props.photo)}
+            style={{ gridRowEnd: `span ${this.state.spans}` }}
+            >
                 <img
                     ref={this.imageRef}
                     alt={description}
